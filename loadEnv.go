@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"os"
 	"strings"
+	"github.com/subosito/gotenv"
 )
 
 type AzureConfig struct {
@@ -52,6 +53,8 @@ func init() {
 	_, err = fmt.Fprintf(w, "%s=%s\n", "ENVIRONMENT", environment)
 	check(err)
 	w.Flush()
+
+	gotenv.Load()
 }
 
 func check(err error) {
